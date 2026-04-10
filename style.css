@@ -10,25 +10,16 @@
   padding: 0;
 }
 
-/* ── 색상 변수 ── */
+/* ── 색상 변수 : 라이트 모드 (기본값) ── */
 :root {
   --purple-50:  #EEEDFE;
   --purple-200: #AFA9EC;
   --purple-600: #534AB7;
   --purple-800: #3C3489;
 
-  --gray-50:  #F7F7F5;
-  --gray-100: #EFEFED;
-  --gray-300: #D3D1C7;
-  --gray-500: #888780;
-  --gray-700: #5F5E5A;
-  --gray-900: #2C2C2A;
-
-  --green-50:  #EAF3DE;
-  --green-700: #27500A;
-
-  --amber-50:  #FAEEDA;
-  --amber-700: #633806;
+  --surface-page: #F5F4F0;
+  --surface-card: #FFFFFF;
+  --surface-sub:  #F7F7F5;
 
   --text-primary:   #1A1A18;
   --text-secondary: #5F5E5A;
@@ -37,8 +28,35 @@
   --border:       rgba(0, 0, 0, 0.08);
   --border-hover: rgba(0, 0, 0, 0.15);
 
+  --check-yes-bg: rgba(234, 243, 222, 0.5);
+  --check-no-bg:  #FFFFFF;
+
   --radius:    12px;
   --radius-sm:  8px;
+}
+
+/* ── 색상 변수 : 다크 모드 ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --purple-50:  #2E2B5F;
+    --purple-200: #7B72D4;
+    --purple-600: #8F88E0;
+    --purple-800: #C4BFEF;
+
+    --surface-page: #191919;
+    --surface-card: #232323;
+    --surface-sub:  #2C2C2C;
+
+    --text-primary:   #E8E8E6;
+    --text-secondary: #9A9A96;
+    --text-hint:      #636360;
+
+    --border:       rgba(255, 255, 255, 0.07);
+    --border-hover: rgba(255, 255, 255, 0.14);
+
+    --check-yes-bg: rgba(100, 90, 200, 0.12);
+    --check-no-bg:  #2C2C2C;
+  }
 }
 
 /* ── 전체 레이아웃 ── */
@@ -46,7 +64,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #F5F4F0;
+  background: var(--surface-page);
   color: var(--text-primary);
   min-height: 100vh;
   padding: 40px 20px 60px;
@@ -100,7 +118,7 @@ body {
 
 /* ── 진행률 바 ── */
 .progress-wrap {
-  background: white;
+  background: var(--surface-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px 20px;
@@ -113,7 +131,7 @@ body {
 .progress-bar-track {
   flex: 1;
   height: 4px;
-  background: var(--gray-100);
+  background: var(--surface-sub);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -147,7 +165,7 @@ body {
 }
 
 .step {
-  background: white;
+  background: var(--surface-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -182,8 +200,8 @@ body {
   font-size: 12px;
   font-weight: 600;
   flex-shrink: 0;
-  background: var(--gray-100);
-  color: var(--gray-700);
+  background: var(--surface-sub);
+  color: var(--text-secondary);
   transition: background 0.2s, color 0.2s;
 }
 
@@ -220,7 +238,7 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--gray-50);
+  background: var(--surface-sub);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -262,7 +280,7 @@ body {
 }
 
 .notice {
-  background: var(--gray-50);
+  background: var(--surface-sub);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
@@ -303,14 +321,14 @@ body {
   gap: 4px;
   font-size: 12.5px;
   color: var(--text-secondary);
-  background: var(--gray-50);
+  background: var(--surface-sub);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
   margin: 10px 0;
 }
 
-.how-path .arrow { color: var(--gray-300); }
+.how-path .arrow { color: var(--text-hint); }
 
 .how-path .kw {
   background: var(--purple-50);
@@ -353,8 +371,8 @@ body {
 
 .check-item + .check-item { border-top: 1px solid var(--border); }
 
-.check-item.yes { background: rgba(234, 243, 222, 0.4); }
-.check-item.no  { background: white; }
+.check-item.yes { background: var(--check-yes-bg); }
+.check-item.no  { background: var(--check-no-bg); }
 
 .check-icon {
   font-size: 15px;
@@ -375,7 +393,7 @@ body {
 
 /* 결과 발표 배너 */
 .result-banner {
-  background: linear-gradient(135deg, var(--purple-50) 0%, white 100%);
+  background: var(--purple-50);
   border: 1.5px solid var(--purple-200);
   border-radius: var(--radius-sm);
   padding: 14px 16px;
