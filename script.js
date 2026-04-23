@@ -23,62 +23,47 @@ const STEPS = [
     label: "STEP 1",
     title: "간편 신청",
     meta: "홈페이지를 통한 간편 신청",
-    desc: "홈페이지를 통해 Oracle AI Campus에 간편 신청한 단계로, \n 이후 순차적으로 담당 매니저가 프로세스를 개별 안내드립니다:)",
-    link: { label: "내배카 발급하러 가기", url: "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/149200000026" },
+    desc: "홈페이지를 통해 Oracle AI Campus에 간편 신청을 진행합니다.\n 전담 매니저와의 유선 상담이 필요하지 않은 경우, 서류 전형으로 바로 이동해 주세요! \n 간편 신청 후 1~2일 이내 서류 미제출 시 전담 매니저가 유선 연락드릴 예정입니다:) \n <em style='color: var(--purple-600'>(☎️ 02-6235-5089)</em>",
+    link: { label: "서류 전형 바로가기", url: "https://forms.gle/g9go8SzFFu4M5k9U8" },
     checks: [
       { yes: true,  main: "내일배움카드 소지 중",       sub: "→ 서류 전형으로 이동하세요" },
-      { yes: false, main: "아직 내일배움카드가 없어요", sub: "→ 내일배움카드 발급 방법을 먼저 확인하세요" }
+      { yes: false, main: "아직 내일배움카드가 없어요", sub: "→ 내일배움카드를 먼저 발급해 주세요",
+        links: [
+          { label: "내배카 발급하러 가기", url: "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/149200000026" },
+          { label: "국민내일배움카드 A to Z", url: "https://innate-paprika-fed.notion.site/A-Z-34a5d646839a80c4a400e5e446a2314d" }
+        ] }
     ]
   },
   {
     label: "STEP 2",
     title: "서류 전형",
     meta: "구글 폼을 통한 서류 전형 제출 (마감일 : 3/18(수))",
-    desc: "내일배움카드 발급 완료 및 담당 매니저와 유선 통화로 수강 가능 여부를 확인하셨다면 서류를 제출해 주세요!\n⚠️ 서류는 한 번만 제출 가능하니, 신중하게 작성 부탁드립니다.",
+    desc: "내일배움카드 발급 완료 및 간편 신청이 완료되었다면 서류를 제출해 주세요!\n⚠️ 서류는 한 번만 제출 가능하니, 신중하게 작성 부탁드립니다.",
     link: { label: "서류 작성하러 가기", url: "https://forms.gle/g9go8SzFFu4M5k9U8" },
+    notice: "<strong>서류 제출 후 안내 방식</strong><br>✅ 서류 작성 완료 → 합격 여부·절차를 <strong>문자</strong>로 안내드립니다<br>❎ 서류 미작성 → 담당 매니저가 <strong>유선으로 개별 상담</strong>을 도와드립니다",
     checks: [
-      { yes: true,  main: "서류 제출 완료", sub: "→ 합격 시 사전 테스트와 면접 일정을 개별 안내드립니다" },
-      { yes: false, main: "아직 제출 전",   sub: "→ 3/18(수)까지 제출 필수이며, 간편 신청과 서류 제출 모두 완료해야 신청이 완료됩니다:)" }
+      { yes: true,  main: "서류 제출 완료", sub: "→ 추후 <mark>서류 결과</mark>를 개별 안내 예정이니 잠시 기다려주세요 :)" },
+      { yes: false, main: "아직 제출 전",   sub: "→ <mark>3/18(수)까지 제출 필수</mark>이며, 간편 신청과 서류 제출 모두 완료해야 신청이 완료됩니다 :)" }
     ]
   },
   {
     label: "STEP 3",
-    title: "사전 역량 테스트",
-    meta: "서류 합격자 대상 개별 안내",
-    desc: "서류 합격자 대상으로 사전 역량 테스트가 진행됩니다! \n 일정은 개별 안내 예정입니다.",
-    notice: "<strong>유의사항</strong><br>테스트는 전반적인 교과 이해도 파악 목적입니다. AI 도움 없이 본인 지식 수준으로 응시해 주세요. <br/> 응시자 평균을 참고하여 6개월 학습이 설계되므로, 실력 그대로 응시하셔야 학습을 원활하게 따라오실 수 있습니다.",
-    extra: "💡 온라인 입학 설명회가 해당 기간 중 화상으로 진행됩니다! 신청 링크는 순차 발송 예정입니다😉"
-  },
-  {
-    label: "STEP 4",
-    title: "고용24 수강신청",
-    meta: "내일배움카드 필수",
-    desc: "서류 합격자는 고용24 홈페이지에서 수강신청을 진행해 주세요! \n 💳 내일배움카드를 반드시 소지하셔야 합니다.",
-    howPath: ["고용24", "취업지원", "훈련 찾기·신청", "오라클 AI Campus 검색"],
-    checks: [
-      { yes: true,  main: "수강신청 완료",   sub: "→ 담당 매니저의 면접 안내를 기다려 주세요👏" },
-      { yes: false, main: "수강신청 미완료", sub: "→ 내일배움카드 발급·수강신청에 어려움이 있다면 언제든 문의주세요:)" }
-    ]
-  },
-  {
-    label: "STEP 5",
-    title: "면접 전형",
-    meta: "3/24(화) · 3/25(수) · 서울 성동구",
-    desc: "고용24 수강신청을 완료한 면접 대상자에게 개별 문자·전화로 일정이 안내됩니다. \n 📞 문자에 답장이 없을 경우 유선 연락드리니 전화를 꼭 받아주세요!",
+    title: "사전 테스트 · 면접",
+    meta: "서류 합격자 대상 동일 날 진행",
+    desc: "서류 합격자를 대상으로 사전 역량 테스트와 면접이 같은 날 진행됩니다.\n 일정은 개별 문자로 안내드립니다.",
+    notice: "💡 <strong>사전 역량 테스트</strong><br>✅ 전공자 : 프로그래밍 기초, 자료 구조 등 기본적인 IT 역량 문항 <br> ✅ 비전공자 : 기초 논리력, 문제 해결력, IT 기초 이해도 확인 문항",
+    // notice: "📌 <strong>사전 역량 테스트 유의사항</strong><br>테스트는 전반적인 교과 이해도 파악 목적입니다. AI 도움 없이 본인 지식 수준으로 응시해 주세요.<br>응시자 평균을 참고하여 6개월 학습이 설계되므로, 실력 그대로 응시하셔야 학습을 원활하게 따라오실 수 있습니다.",
     dates: [
       "📅 2026년 3월 24일(화), 25일(수)",
-      "⏰ 면접 시간은 개별 안내",
+      "⏰ 면접·테스트 시간은 개별 안내",
       "🙋 그룹 면접으로 진행",
       "🏢 서울시 성동구 (자세한 장소 추후 안내)"
     ],
-    checks: [
-      { yes: true,  main: "참석 문자 회신 완료", sub: "→ 면접장에서 만나요!" },
-      { yes: false, main: "아직 회신 전",         sub: "→ 참석 의사를 알려주셔야 면접이 확정됩니다. 지금 바로 회신해 주세요!" }
-    ]
+    extra: "⚠️ <strong>사전 역량 테스트 유의사항</strong><br>테스트는 전반적인 교과 이해도 파악 목적입니다. AI 도움 없이 본인 지식 수준으로 응시해 주세요.<br>응시자 평균을 참고하여 6개월 학습이 설계되므로, 실력 그대로 응시하셔야 학습을 원활하게 따라오실 수 있습니다."
   },
   {
-    label: "STEP 6",
-    title: "최종 결과 발표",
+    label: "STEP 4",
+    title: "최종 합격 발표",
     meta: "2026년 3월 4주차 예정",
     isResult: true
   }
@@ -110,8 +95,8 @@ function renderStep(s, i) {
        </div>`
     : '';
 
-  const noticeHTML  = s.notice ? `<div class="notice">${s.notice}</div>`  : '';
-  const extraHTML   = s.extra  ? `<div class="notice">${s.extra}</div>`   : '';
+  const noticeHTML = s.notice ? `<div class="notice">${s.notice}</div>` : '';
+  const extraHTML  = s.extra  ? `<div class="notice">${s.extra}</div>`  : '';
 
   const checksHTML = s.checks
     ? `<div class="check-section">
@@ -121,6 +106,8 @@ function renderStep(s, i) {
             <div>
               <div class="check-main">${c.main}</div>
               <div class="check-sub">${c.sub}</div>
+              ${c.link ? `<a class="cta-link" href="${c.link.url}" target="_blank" style="margin-top:8px;">${c.link.label} →</a>` : ''}
+              ${c.links ? `<div class="cta-links">${c.links.map(l => `<a class="cta-link" href="${l.url}" target="_blank">${l.label} →</a>`).join('')}</div>` : ''}
             </div>
           </div>
         `).join('')}
@@ -130,7 +117,7 @@ function renderStep(s, i) {
   const bodyContent = s.isResult
     ? `<div class="result-banner">
         <div class="emoji">🎓</div>
-        <div class="title">합격자 대상 개별 안내 예정</div>
+        <div class="title">최종 결과 개별 안내 예정</div>
         <div class="sub">2026년 3월 4주차 예정 · 일정은 변동될 수 있습니다</div>
        </div>`
     : `${s.desc ? `<p class="desc">${s.desc}</p>` : ''}
